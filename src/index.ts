@@ -18,5 +18,8 @@ app.use(cors({
 // routes
 app.use("/api/auth", authRouter);
 app.use("/api/room", authMiddleware, roomRouter)
+app.get("/health", (req: Request, res: Response) => {
+	res.json({message: "server is healthy"})
+})
 
-app.listen(3000, () => { console.log("Server is listening on port 3000") });
+app.listen(3002, () => { console.log("Server is listening on port 3002") });

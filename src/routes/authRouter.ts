@@ -35,7 +35,7 @@ authRouter.post("/signup", async function(req: Request, res: Response) {
 
   } catch (err) {
     console.log("Server error.")
-    res.status(500).json({ message: "Server error. Could not sign the user in." })
+    res.status(500).json({ message: "Server error. Could not sign up. User already exists." })
   }
 })
 

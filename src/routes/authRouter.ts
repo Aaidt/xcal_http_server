@@ -34,7 +34,7 @@ authRouter.post("/signup", async function(req: Request, res: Response) {
     res.status(200).json({ message: "User created successfully.", userId: user.id, token })
 
   } catch (err) {
-    console.log("Server error.")
+    console.log("Server error. User already exists")
     res.status(500).json({ message: "Server error. Could not sign up. User already exists." })
   }
 })

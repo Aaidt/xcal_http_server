@@ -7,6 +7,9 @@
     "dev": "tsc -b && node ./dist/index.js",
     "start": "node ./dist/index.js"
   },
+"prisma": {
+  "schema": "src/prisma/schema.prisma"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",

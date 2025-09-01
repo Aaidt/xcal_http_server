@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import { prismaClient } from '@repo/db/client';
+import { prismaClient } from "../prisma/export";
 import { compare, hash } from "bcrypt"
 import jwt from "jsonwebtoken"
 import dotenv from "dotenv";

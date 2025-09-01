@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String   @id @default(uuid())
+  name       String
+  username   String   @unique
+  password   String
+  photo      String?
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  admin_of Room[] @relation("Admin")
+  rooms    Room[] @relation("Participants")
+}
+
+model Shape {
+  id    String @id @default(uuid())
+  shape String
+
+  roomId String
+  room   Room   @relation(fields: [roomId], references: [id], onDelete: Cascade)
+}
+
+model Link {
+  id   Int    @id @default(autoincrement())
+  link String @unique
+
+  roomId String @unique
+  room   Room   @relation("Links", fields: [roomId], references: [id], onDelete: Cascade)
+}
+
+model Room {
+  id         String   @id @default(uuid())
+  slug       String   @unique
+  created_at DateTime @default(now())
+
+  adminId String
+  admin   User   @relation("Admin", fields: [adminId], references: [id], onDelete: Cascade)
+
+  link Link? @relation("Links")
+
+  user User[] @relation("Participants")
+
+  shapes Shape[]
+}

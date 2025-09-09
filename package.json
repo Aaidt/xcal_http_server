@@ -7,14 +7,15 @@
     "dev": "tsc -b && node ./dist/index.js",
     "start": "node ./dist/index.js"
   },
-"prisma": {
-  "schema": "src/prisma/schema.prisma"
-},
+  "prisma": {
+    "schema": "src/prisma/schema.prisma"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@clerk/express": "^1.7.29",
     "@prisma/client": "6.15.0",
     "@types/bcrypt": "^6.0.0",
     "@types/cookie-parser": "^1.4.9",
